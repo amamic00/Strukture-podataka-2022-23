@@ -273,9 +273,8 @@ int DeleteAfter(position head)
 
 int DeleteAll(position head)
 {
-	while (head != NULL) {
+	while (head->next!= NULL) {
 		DeleteAfter(head);
-		head = head->next;
 	}
 	return EXIT_SUCCESS;
 }

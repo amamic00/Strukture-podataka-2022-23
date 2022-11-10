@@ -1,0 +1,4 @@
+﻿  strukture4.c
+C:\Users\Jure\source\repos\Strukture4\Strukture4\strukture4.c(62,12): warning C4047:  'return': 'position' differs in levels of indirection from 'int'
+C:\Users\Jure\source\repos\Strukture4\Strukture4\strukture4.c(112,17): warning C4047:  '=': 'char *' differs in levels of indirection from 'char (*)[150]'
+  Strukture4.vcxproj -> C:\Users\Jure\source\repos\Strukture4\Debug\Strukture4.exe

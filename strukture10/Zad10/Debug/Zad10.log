@@ -1,0 +1,4 @@
+﻿  functions.c
+C:\Users\Jure\source\repos\Zad10\Zad10\functions.c(190,50): warning C4133:  'function': incompatible types - from 'CityPosition' to 'CountryPosition'
+C:\Users\Jure\source\repos\Zad10\Zad10\functions.c(194,1): warning C4028:  formal parameter 1 different from declaration
+  Zad10.vcxproj -> C:\Users\Jure\source\repos\Zad10\Debug\Zad10.exe

@@ -1,0 +1,8 @@
+Split 178102
+Zagreb 790017
+Rijeka 128624
+Pula 57460
+Dubrovnik 42615
+Sibenik	46332
+Pozega 26248
+Karlovac 55705	

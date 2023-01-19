@@ -1,0 +1,5 @@
+﻿  functions.c
+  main.c
+  Generating Code...
+C:\Users\Jure\source\repos\Zad11\Zad10\functions.c(230,31): warning C4013:  'CheckNumber' undefined; assuming extern returning int
+  Zad10.vcxproj -> C:\Users\Jure\source\repos\Zad11\x64\Debug\Zad10.exe

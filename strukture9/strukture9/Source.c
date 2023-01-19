@@ -14,123 +14,73 @@ typedef struct _tree
 	position right;
 } tree;
 
-struct _list;
-typedef struct _list* lposition;
-typedef struct _list
-{
-	int number;
-	lposition next;
-}list;
-
-
+int printLevel(position, int);
+int printLevelOrder(position);
 position createNewElement(int);
-position insert(position, position);
-int inorder(position);
-int replace(position);
-int printinList(position, lposition);
-lposition createNewListElement(int);
-int appendList(lposition, int);
-lposition findLast(lposition);
-int insertAfter(lposition, lposition);
-int fileEntry(lposition, char*);
 position insertA(position, int*);
+position insert(position, int);
+int replace(position);
 position randomC(position);
-
-
+int fileEntry(position, char*);
+int treeEntry(position, FILE*);
+int askFilename(char*);
 int main() {
+	position root = NULL;
+	position rootC = NULL;
+	
 	int niz[] = { 2, 5, 7, 8, 11, 1, 4, 2, 3, 7 };
 	char dat[50] = { 0 };
 
-	position root = NULL;
-	lposition head=NULL;
-
+	printf("a) ");
 	root = insertA(root, niz);
-	inorder(root);
-	printf("\n");
+	printLevelOrder(root);
 
-	//b
-	root->number = replace(root);
-	inorder(root);
-	printf("\n");
+	askFilename(dat);
+	fileEntry(root, dat);
 
-	/*root = randomC(root);
+	printf("\n\nb) ");
+	root->number = replace(root->left) + replace(root->right);
+	printLevelOrder(root);
 
-	inorder(root);
-	printf("\n");
+	askFilename(dat);
+	fileEntry(root, dat);
 
-	printf("Upisite ime datoteke u koju zelite pohraniti svoju listu: ");
-	scanf(" %s", dat);
-	printf("\n");*/
-
-
-	//a)
-	/*printinList(root, head->next);
-	printf("\n");
-	fileEntry(head->next, dat);
-	printf("\n");
-*/
-	//b)
-	root->number = replace(root);
-	printinList(root, &head);
-	printf("\n");
-	fileEntry(&head, dat);
-
-
-
+	printf("\n\nc)");
+	rootC = randomC(rootC);
+	printLevelOrder(rootC);
 
 	return 0;
 }
 
-position randomC(position root) {
-
-	srand(time(NULL));
-	list head = { .next = NULL,.number = {0} };
-	position newElement = NULL;
-	int i = 0;
-
-	root = (position)malloc(sizeof(tree));
-	root->number = rand() % 80 + 10;
-	root->left = NULL;
-	root->right = NULL;
-
-	for (i = 1; i < 10; i++)
-	{
-		newElement = createNewElement(rand() % 80 + 10);
-		if (!newElement)
-		{
-			perror("Can't allocate memory!");
-			return -1;
-		}
-		root = insert(root, newElement);
-	}
-
-	return root;
-}
-
 position insertA(position root, int* niz) {
-	
-	position newElement = NULL;
+
 	int i = 0;
 
-	root = (position)malloc(sizeof(tree));
-	root->number = niz[0];
-	root->left = NULL;
-	root->right = NULL;
-
-	for (i = 1; i < 10; i++)
+	while(i<10)
 	{
-		newElement = createNewElement(niz[i]);
-		if (!newElement)
-		{
-			perror("Can't allocate memory!");
-			return -1;
-		}
-		root = insert(root, newElement);
-
+		root = insert(root, niz[i]);
+		i++;
 	}
 	return root;
 }
 
+position insert(position root, int number)
+{
+	if (root == NULL) {
+		root = createNewElement(number);
+		return root;
+	}
+
+	else if (number >= root->number) {
+		root->left = insert(root->left, number);
+	}
+
+	else if (number < root->number) {
+		root->right = insert(root->right, number);
+	}
+
+	return root;
+}
 
 position createNewElement(int number)
 {
@@ -149,17 +99,6 @@ position createNewElement(int number)
 	return newElement;
 }
 
-position insert(position current, position newElement)
-{
-	if (current == NULL)
-		return newElement;
-	if (current->number <= newElement->number)
-		current->left = insert(current->left, newElement);
-	else if (current->number > newElement->number)
-		current->right = insert(current->right, newElement);
-	return current;
-}
-
 int inorder(position current)
 {
 	if (current == NULL)
@@ -173,7 +112,7 @@ int inorder(position current)
 
 int replace(position current)
 {
-	int temp;
+	int temp = 0;
 	if (current == NULL)
 		return 0;
 	else {
@@ -183,110 +122,68 @@ int replace(position current)
 
 	return temp + current->number;
 }
-/*
-int replace(position current)
+int printLevel(position root, int level)
 {
-	int temp = 0;
-	if (!(current->left || current->right))
+	int left = 0, right = 0;
+	if (root == NULL)
+		return 0;
+	if (level == 1)
 	{
-		temp = current->number;
-		current->number = 0;
-		return temp;
+		printf("%d\n", root->number);
+		return 1;
 	}
-	else if (current->left&&current->right)
-	{
-		temp = current->number;
-		current->number = replace(current->left) + replace(current->right);
-		temp += current->number;
-		return temp;
-	}
-	else if (current->left && !current->right)
-	{
-		temp = current->number;
-		current->number = replace(current->left);
-		temp += current->number;
-		return temp;
-	}
-	else
-	{
-		temp = current->number;
-		current->number = replace(current->right);
-		temp += current->number;
-		return temp;
-	}
-	return current->number;
-}*/
-
-int printinList(position current, lposition head)
+	left = printLevel(root->left, level - 1);
+	right = printLevel(root->right, level - 1);
+	return left || right;
+}
+int printLevelOrder(position root)
 {
-	
+	int level = 1;
+	while (printLevel(root, level))
+		level++;
 	return 0;
 }
-int appendList(lposition head, int number)
-{
-	lposition newListElement = NULL;
-	lposition last = NULL;
 
-	newListElement = createNewListElement(number);
-	if (!newListElement) {
-		return -1;
-	}
-	last = findLast(head);
-	insertAfter(last, newListElement);
+position randomC(position root) {
 
-	return EXIT_SUCCESS;
+	srand(time(NULL));
+	int i = 0;
 
-
-}
-lposition findLast(lposition head)
-{
-	lposition temp = head;
-
-	while (temp->next) {
-		temp = temp->next;
-	}
-
-	return temp;
-}
-lposition createNewListElement(int number)
-{
-	lposition newListElement = NULL;
-	newListElement = (lposition)malloc(sizeof(list));
-	if (!newListElement)
+	for (i = 1; i < 10; i++)
 	{
-		perror("Can't allocate memory!");
-		return NULL;
+		root = insert(root, rand() % 80 + 10);
 	}
 
-	newListElement->number = number;
-	newListElement->next = NULL;
-
-	return newListElement;
+	return root;
 }
-int insertAfter(lposition position, lposition newListElement)
-{
-	newListElement->next = position->next;
-	position->next = newListElement;
 
-	return EXIT_SUCCESS;
+int askFilename(char* filename) {
+
+	printf("Unesite ime datoteke: ");
+	scanf(" %s", filename);
+
+	return 0;
 }
-int fileEntry(lposition head, char* FileName)
-{
-	FILE* f = fopen(FileName, "w");
-	lposition position = head->next;
-	if (!f) {
+
+int fileEntry(position root, char* FileName) {
+	FILE* fp = NULL;
+	fp = fopen(FileName, "w");
+	if (!fp) {
 		printf("Greska!");
 	}
-	while (position != NULL)
-	{
-		fprintf(f, " %d ", position->number);
-		position = position->next;
-	}
-	fprintf(f, "\n");
-
-	printf("Upis liste u datoteku uspjesno obavljen!");
-	fclose(f);
-
-	return EXIT_SUCCESS;
+	treeEntry(root, fp);
+	fprintf(fp, "\n");
+	fclose(fp);
+	return 0;
 }
+int treeEntry(position root, FILE* fp) {
 
+	if (root)
+	{
+		treeEntry(root->left, fp);
+		fprintf(fp, "%d ", root->number);
+		treeEntry(root->right, fp);
+	}
+
+	return 0;
+}

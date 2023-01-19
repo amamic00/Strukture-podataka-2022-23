@@ -1,0 +1,3 @@
+﻿  strukture10b.c
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b.c(153,17): warning C4047:  'return': 'int' differs in levels of indirection from 'CityPosition'
+  strukture10b.vcxproj -> C:\Users\Jure\source\repos\strukture10b\Debug\strukture10b.exe

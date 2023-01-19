@@ -1,0 +1,9 @@
+Milano 1397715
+Turin 848196
+Roma 2783809
+Florence 359755
+Bologna 394463
+Venice 261362
+Trieste 202123
+Naples 962003
+Pisa 85858

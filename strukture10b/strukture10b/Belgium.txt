@@ -1,0 +1,7 @@
+Brussels 176545
+Ghent 256082
+Antwerp 520504
+Charleroi 201256
+Bruges 118187
+Mechelen 86921
+Leuven 101032

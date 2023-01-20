@@ -1,0 +1,6 @@
+﻿  functions.c
+C:\Users\Jure\source\repos\strukture10b\strukture10b\functions.c(67,22): warning C4047:  'return': 'CountryPosition' differs in levels of indirection from 'int'
+C:\Users\Jure\source\repos\strukture10b\strukture10b\functions.c(214,9): warning C4033:  'CheckPopulation' must return a value
+C:\Users\Jure\source\repos\strukture10b\strukture10b\functions.c(208): warning C4715:  'FindCountry': not all control paths return a value
+C:\Users\Jure\source\repos\strukture10b\strukture10b\functions.c(226): warning C4715:  'CheckPopulation': not all control paths return a value
+  strukture10b.vcxproj -> C:\Users\Jure\source\repos\strukture10b\x64\Debug\strukture10b.exe

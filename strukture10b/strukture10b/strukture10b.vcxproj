@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{D65FBB74-DEE8-46D7-82BA-F18892A227BA}</ProjectGuid>
+    <ProjectGuid>{5770A979-1D05-4493-ADF0-D5937C839C9F}</ProjectGuid>
     <RootNamespace>strukture10b</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -123,7 +123,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="functions.c" />
     <ClCompile Include="strukture10b.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="declarations.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

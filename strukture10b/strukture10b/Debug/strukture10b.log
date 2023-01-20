@@ -1,3 +1,10 @@
-﻿  strukture10b.c
-C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b.c(153,17): warning C4047:  'return': 'int' differs in levels of indirection from 'CityPosition'
-  strukture10b.vcxproj -> C:\Users\Jure\source\repos\strukture10b\Debug\strukture10b.exe
+﻿  functions.c
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b\functions.c(19,72): warning C4047:  '==': 'CountryPosition' differs in levels of indirection from 'int'
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b\functions.c(19,72): warning C4047:  '=': 'CountryPosition' differs in levels of indirection from 'int'
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b\functions.c(20,9): warning C4033:  'UserInput' must return a value
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b\functions.c(68,22): warning C4047:  'return': 'CountryPosition' differs in levels of indirection from 'int'
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b\functions.c(215,9): warning C4033:  'CheckPopulation' must return a value
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b\functions.c(39): warning C4715:  'UserInput': not all control paths return a value
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b\functions.c(209): warning C4715:  'FindCountry': not all control paths return a value
+C:\Users\Jure\source\repos\strukture10b\strukture10b\strukture10b\functions.c(227): warning C4715:  'CheckPopulation': not all control paths return a value
+  strukture10b.vcxproj -> C:\Users\Jure\source\repos\strukture10b\strukture10b\Debug\strukture10b.exe
